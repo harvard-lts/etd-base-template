@@ -1,0 +1,13 @@
+celery==5.2.7
+certifi==2022.12.7
+iniconfig==2.0.0
+packaging==23.1
+pluggy==1.0.0
+project-paths==1.1.1
+pytest==7.3.1
+pytest-mock==3.10.0
+python-dotenv==1.0.0
+requests==2.30.0
+toml==0.10.2
+tomli==2.0.1
+urllib3==2.0.2
