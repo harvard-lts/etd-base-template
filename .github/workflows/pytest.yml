@@ -31,7 +31,7 @@ jobs:
 
       - name: Run flake8
         run: | 
-          pip install .["dev"]
+          pip install flake8
           flake8 --ignore E203,W503,W504,E501,E731,E741 .
 
       - name: Run unit tests
