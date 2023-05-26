@@ -12,7 +12,7 @@ class TestWorkerClass():
         assert version == expected_version
 
     @requests_mock.Mocker()
-    def test_api(m):
+    def test_api(self, m):
         expected_msg = "REST api is running."
         url = "https://dash.harvard.edu/rest/test"
         m.get(url, text="REST api is NOT running.")
