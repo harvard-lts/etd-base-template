@@ -34,13 +34,13 @@ jobs:
           pip install flake8
           flake8 --ignore E203,W503,W504,E501,E731,E741 .
 
-      # - name: Run unit tests
-      #   run: python -m pytest tests/unit
+      - name: Run unit tests
+        run: python -m pytest tests/unit
       
-      # - name: Run integration tests
-      #   run: python -m pytest tests/integration
+      - name: Run integration tests
+        run: python -m pytest tests/integration
 
-      - name: Run tests w/ coverage
+      - name: Run coverage
         run: |
           pip install coverage
           python -m coverage run -p -m pytest
