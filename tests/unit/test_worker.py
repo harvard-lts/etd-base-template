@@ -5,10 +5,6 @@ import requests
 class MockResponse:
     text = "REST api is running."
 
-    @staticmethod
-    def msg():
-        return "REST api is running."
-
 
 class TestWorkerClass():
 
@@ -28,7 +24,6 @@ class TestWorkerClass():
         expected_msg = "REST api is running."
         worker = Worker()
         msg = worker.call_api()
-        print(msg)
         assert msg == expected_msg
 
     def test_api_fail(self, monkeypatch):
@@ -41,5 +36,4 @@ class TestWorkerClass():
         expected_msg = "REST api is NOT running."
         worker = Worker()
         msg = worker.call_api()
-        print(msg)
         assert msg != expected_msg
