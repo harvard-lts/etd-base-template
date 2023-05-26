@@ -7,7 +7,7 @@ class MockResponse:
 
     @staticmethod
     def msg():
-        return self.text
+        return "REST api is running."
 
 
 class TestWorkerClass():
