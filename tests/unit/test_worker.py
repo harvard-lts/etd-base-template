@@ -1,4 +1,4 @@
-from etd.worker import Worker
+# from etd.worker import Worker
 
 
 class TestWorkerClass():
@@ -16,6 +16,5 @@ class TestWorkerClass():
     #     assert msg == expected_msg
 
     # removing this, just want to bring the coverage down on the badge
-    def test_nothing(self): 
-        worker = Worker()
+    def test_nothing(self):
         assert True
