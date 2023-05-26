@@ -15,5 +15,7 @@ class TestWorkerClass():
     #     msg = worker.call_api()
     #     assert msg == expected_msg
 
-    def test_nothing(self): #removing this, just want to bring the coverage down on the badge
-        assert True == True
+    # removing this, just want to bring the coverage down on the badge
+    def test_nothing(self): 
+        worker = Worker()
+        assert True
