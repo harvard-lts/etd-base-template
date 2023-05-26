@@ -1,6 +1,6 @@
 from etd.worker import Worker
 import requests
-import requests-mock
+import requests_mock
 
 
 class TestWorkerClass():
