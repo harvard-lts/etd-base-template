@@ -30,3 +30,16 @@ class TestWorkerClass():
         msg = worker.call_api()
         print(msg)
         assert msg == expected_msg
+
+    def test_api_fail(self, monkeypatch):
+
+        def mock_get(*args, **kwargs):
+            return MockResponse()
+
+        # apply the monkeypatch for requests.get to mock_get
+        monkeypatch.setattr(requests, "get", mock_get)
+        expected_msg = "REST api is NOT running."
+        worker = Worker()
+        msg = worker.call_api()
+        print(msg)
+        assert msg != expected_msg

@@ -8,3 +8,9 @@ class TestWorkerIntegrationClass():
         worker = Worker()
         msg = worker.call_api()
         assert msg == expected_msg
+
+    def test_api_fail(self):
+        expected_msg = "REST api is NOT running."
+        worker = Worker()
+        msg = worker.call_api()
+        assert msg != expected_msg
