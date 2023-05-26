@@ -1,5 +1,5 @@
 from etd.worker import Worker
-import requests
+# import requests
 import requests_mock
 
 
@@ -11,10 +11,11 @@ class TestWorkerClass():
         version = worker.get_version()
         assert version == expected_version
 
-    def test_api(requests_mock):
+    @requests_mock.Mocker()
+    def test_api(m):
         expected_msg = "REST api is running."
         url = "https://dash.harvard.edu/rest/test"
-        requests_mock.get(url, text="REST api is NOT running.")
+        m.get(url, text="REST api is NOT running.")
         worker = Worker()
         msg = worker.call_api()
         print(msg)
