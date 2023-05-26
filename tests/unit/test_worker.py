@@ -17,7 +17,7 @@ class TestWorkerClass():
         version = worker.get_version()
         assert version == expected_version
 
-    def test_api(monkeypatch):
+    def test_api(self, monkeypatch):
 
         def mock_get(*args, **kwargs):
             return MockResponse()
