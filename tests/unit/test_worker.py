@@ -3,10 +3,11 @@ import requests
 
 
 class MockResponse:
+    text = "REST api is running."
 
     @staticmethod
     def msg():
-        return "REST api is running."
+        return self.text
 
 
 class TestWorkerClass():
