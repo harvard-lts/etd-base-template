@@ -1,6 +1,12 @@
 from etd.worker import Worker
-# import requests
-import requests_mock
+import requests
+
+
+class MockResponse:
+
+    @staticmethod
+    def msg():
+        return "REST api is running."
 
 
 class TestWorkerClass():
@@ -11,11 +17,14 @@ class TestWorkerClass():
         version = worker.get_version()
         assert version == expected_version
 
-    @requests_mock.Mocker()
-    def test_api(self, m):
+    def test_api(monkeypatch):
+
+        def mock_get(*args, **kwargs):
+            return MockResponse()
+
+        # apply the monkeypatch for requests.get to mock_get
+        monkeypatch.setattr(requests, "get", mock_get)
         expected_msg = "REST api is running."
-        url = "https://dash.harvard.edu/rest/test"
-        m.get(url, text="REST api is NOT running.")
         worker = Worker()
         msg = worker.call_api()
         print(msg)
