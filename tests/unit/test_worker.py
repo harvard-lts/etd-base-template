@@ -1,5 +1,5 @@
 from etd.worker import Worker
-import requests
+# import requests
 
 
 # class MockResponse:
