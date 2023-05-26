@@ -48,16 +48,16 @@ jobs:
           python -m coverage report -m --skip-covered
           python -m coverage json
 
-      - name: "Upload coverage data"
-        uses: actions/upload-artifact@v3
-        with:
-          name: covdata
-          path: .coverage.*
+      # - name: "Upload coverage data"
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: covdata
+      #     path: .coverage.*
 
-      - name: "Download coverage data"
-        uses: actions/download-artifact@v3
-        with:
-          name: covdata
+      # - name: "Download coverage data"
+      #   uses: actions/download-artifact@v3
+      #   with:
+      #     name: covdata
 
       - name: "Combine"
         run: |
