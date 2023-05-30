@@ -39,14 +39,14 @@ In your repository on GitHub that will be using the badge:
 In your repository, open .github/workflows/pytest.yml
 - Under the "Make badge" section, set the gistID = the ID of the gist that you created above.  It will be unique ID that can be found in the address bar of the gist.  For example, the address bar may look like:
 
-https://gist.github.com/<userID>/1234513399189da4ff780f263984506c
+https://gist.github.com/YOUR_GITHUB_USER_ID/1234513399189da4ff780f263984506c
 
 1234513399189da4ff780f263984506c is the unique Gist ID.
 
 ## Readme Update
 
 The badge URL (at the top of all READMEs using this template) must be updated in the README to use your newly created Gist.  The format is:
-https://gist.githubusercontent.com/<your user id>/<unique Gist ID>/raw/covbadge.json 
+https://gist.githubusercontent.com/YOUR_GITHUB_USER_ID/UNIQUE_GIST_ID/raw/covbadge.json 
 
 The covbadge.json gets generated under the gist during the Git Action build.  This step points the image to the correct badge.
 
