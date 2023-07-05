@@ -1,7 +1,7 @@
 import os
 import requests
 from opentelemetry import trace
-from opentelemetry.sdk.resources import Resource
+# from opentelemetry.sdk.resources import Resource
 from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
 from opentelemetry.sdk.trace.export import ConsoleSpanExporter
@@ -31,8 +31,9 @@ class Worker():
 
     # this is call to the DASH healthcheck for integration testing
     def call_api(self):
-        with tracer.start_as_current_span("server_request", 
-                                          attributes={ "endpoint": "/call_api"}):
+        with tracer.start_as_current_span("server_request",
+                                          attributes={"endpoint":
+                                                      "/call_api"}):
             url = "https://dash.harvard.edu/rest/test"
             r = requests.get(url)
             span = trace.get_current_span()
