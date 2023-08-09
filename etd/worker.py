@@ -9,12 +9,6 @@ from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import (
         OTLPSpanExporter)
 from opentelemetry.sdk.resources import SERVICE_NAME
 
-# provider = TracerProvider()
-# processor = BatchSpanProcessor(ConsoleSpanExporter())
-# provider.add_span_processor(processor)
-# trace.set_tracer_provider(provider)
-# tracer = trace.get_tracer(__name__)
-
 # tracing setup
 JAEGER_NAME = os.getenv('JAEGER_NAME')
 JAEGER_SERVICE_NAME = os.getenv('JAEGER_SERVICE_NAME')
