@@ -1,16 +1,33 @@
 import os
+import logging
 import requests
 from opentelemetry import trace
-# from opentelemetry.sdk.resources import Resource
+from opentelemetry.sdk.resources import Resource
 from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
-from opentelemetry.sdk.trace.export import ConsoleSpanExporter
+from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import (
+        OTLPSpanExporter)
+from opentelemetry.sdk.resources import SERVICE_NAME
 
-provider = TracerProvider()
-processor = BatchSpanProcessor(ConsoleSpanExporter())
-provider.add_span_processor(processor)
+# provider = TracerProvider()
+# processor = BatchSpanProcessor(ConsoleSpanExporter())
+# provider.add_span_processor(processor)
+# trace.set_tracer_provider(provider)
+# tracer = trace.get_tracer(__name__)
+
+# tracing setup
+JAEGER_NAME = os.getenv('JAEGER_NAME')
+JAEGER_SERVICE_NAME = os.getenv('JAEGER_SERVICE_NAME')
+
+resource = Resource(attributes={SERVICE_NAME: JAEGER_SERVICE_NAME})
+provider = TracerProvider(resource=resource)
+otlp_exporter = OTLPSpanExporter(endpoint=JAEGER_NAME, insecure=True)
+span_processor = BatchSpanProcessor(otlp_exporter)
+provider.add_span_processor(span_processor)
 trace.set_tracer_provider(provider)
 tracer = trace.get_tracer(__name__)
+
+logger = logging.getLogger('etd_base_template')
 
 """
 This is a template of a basic worker class for etds.
@@ -38,4 +55,5 @@ class Worker():
             r = requests.get(url)
             span = trace.get_current_span()
             span.add_event("log", {"call.api": r.text})
+            logger.debug("call.api: " + r.text)
             return r.text
